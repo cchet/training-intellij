@@ -62,15 +62,8 @@ public class ContactResourceRESTService {
             return Response.ok(contact).build();
         } catch (Exception e) {
             // Handle generic exceptions
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
-    }
-
-    // delete all contacts
-    @DELETE
-    public Response removeAllContacts() {
-        contactsRepository.clear();
-        return Response.ok().build();
     }
 
     // delete a specific contact
